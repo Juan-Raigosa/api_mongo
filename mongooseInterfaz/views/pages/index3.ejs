@@ -10,27 +10,161 @@
     </header>
 
     <main>
-        <table class="table">
+        <table class="table" id="miTabla">
             <thead>
                 <th>Nombre</th>
                 <th>Email</th>
                 <th>Numero</th>
+                <th>Acciones</th>
             <tbody>
                 <% clientes.forEach(function(clientes){ %>
                 <tr>
                     <td><%= clientes.nombre %></td>
                     <td><%= clientes.email %></td>
                     <td><%= clientes.telefono %></td>
+                    <td>
+                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalVer" onclick="modalVer('<%=clientes.nombre%>', '<%= clientes.email%>','<%=clientes.telefono%>')">Ver detalle</button>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#modalEditar" onclick="modalEditar('<%=clientes.nombre%>', '<%= clientes.email%>','<%=clientes.telefono%>')">Editar</button>
+
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
                 </tr>
+
+                <!-- The Modal -->
+                <div class="modal" id="modalVer">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                
+                
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Ver detalles</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                
+                
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="/api/v1/clientes" method="POST">
+                                    <div class="mb-3 mt-3">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombreV" placeholder="Ingrese Nombre" name="nombre"
+                                            readonly>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="emailV" placeholder="Ingrese email" name="email"
+                                            readonly>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="tel">Tel:</label>
+                                        <input type="text" class="form-control" id="telV" placeholder="Ingrese telefono" name="telefono"
+                                            readonly>
+                                    </div>
+                
+                
+                                   
+                                </form>
+                            </div>
+                
+                
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                
+                
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <div class="modal" id="modalEditar">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                
+                
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Editar Perfil</h4>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                
+                
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <form action="/api/v1/clientes" method="POST">
+                                    <div class="mb-3 mt-3">
+                                        <label for="nombre">Nombre:</label>
+                                        <input type="text" class="form-control" id="nombreE" placeholder="Ingrese Nombre" name="nombre">
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="emailE" placeholder="Ingrese email" name="email"
+                                            readonly>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <label for="tel">Tel:</label>
+                                        <input type="text" class="form-control" id="telE" placeholder="Ingrese telefono"
+                                            name="telefono">
+                                    </div>
+                
+                
+                                   
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </form>
+                            </div>
+                
+                
+                            <!-- Modal footer -->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                
+                
+                        </div>
+                    </div>
+                </div>
+
+
+
+
                 <%})%>
             </tbody>
             </table>
         </div>
+
+        
+        <!-- modales -->
+    
+       
+        
     </main>
 
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
+
+    <script>
+        function modalVer(nombre, email, telefono){
+       document.getElementById('modalVer').style.display = 'block';
+       document.getElementById('nombreV').value = nombre;
+       document.getElementById('emailV').value = email;
+       document.getElementById('telV').value = telefono;
+     
+       }
+
+
+       function modalEditar(nombre, email, telefono){
+       document.getElementById('modalEditar').style.display = 'block';
+       document.getElementById('nombreE').value = nombre;
+       document.getElementById('emailE').value = email;
+       document.getElementById('telE').value = telefono;
+     
+       }
+
+    </script>
+
 
 </body>
 </html>
