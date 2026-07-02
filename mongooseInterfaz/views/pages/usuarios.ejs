@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <main>
+        <form  action="/api/v1/enviar" method="POST">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="correo">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Asunto</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="asunto">
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Mensaje</label>
+                <input type="text" class="form-control" id="exampleInputPassword1" name="mensaje">
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+    <script>
+        function modalVer(nombre, email, telefono){
+       document.getElementById('modalVer').style.display = 'block';
+       document.getElementById('nombreV').value = nombre;
+       document.getElementById('emailV').value = email;
+       document.getElementById('telV').value = telefono;
+     
+       }
+
+
+       function modalEditar(nombre, email, telefono){
+       document.getElementById('modalEditar').style.display = 'block';
+       document.getElementById('nombreE').value = nombre;
+       document.getElementById('emailE').value = email;
+       document.getElementById('telE').value = telefono;
+     
+       }
+
+    </script>
+
+
+</body>
+</html>

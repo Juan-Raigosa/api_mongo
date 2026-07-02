@@ -1,17 +1,20 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark mb-3">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="clientesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
+          <a class="nav-link dropdown-toggle" href="#" id="clientesDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Clientes</a>
           <div class="dropdown-menu" aria-labelledby="clientesDropdown">
             <a class="dropdown-item" href="/api/v1/formulario">Registrar</a>
             <a class="dropdown-item" href="/api/v1/clientes">Listar</a>
           </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/api/v1/usuarios">Contacto</a>
         </li>
       </ul>
     </div>
